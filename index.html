@@ -5,8 +5,26 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Login form</title>
+	<link rel="stylesheet" href="style.css">
 </head>
-<body>
-	
+<body class="login-page">
+	<main class="login-wrapper">
+		<form class="login-form">
+			<div class="input-group">
+				<label class="form-label" for="email">Email</label>
+				<input type="email" name="email" id="email" autocomplete="email" required>
+			</div>
+			<div class="input-group">
+				<label class="form-label" for="password">Password</label>
+				<input type="password" name="password" id="password" autocomplete="current-password" required>
+			</div>
+			<div class="form-checkbox">
+				<input type="checkbox" name="logged-in" id="logged-in">
+				<label for="logged-in">Keep me logged in</label>
+			</div>
+			<div class="form-warning">Email/password is not valid. Please, try again.</div>
+			<button class="login-btn">Log In</button>
+		</form>
+	</main>
 </body>
 </html>
