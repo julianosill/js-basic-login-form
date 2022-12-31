@@ -87,7 +87,7 @@ html {
 
 	.login-btn {
 		background-color: #0C4A6E;
-		background-image: linear-gradient(to bottom right, #0891B2, #0C4A6E);
+		background: linear-gradient(to right, #0891B2, #0C4A6E);
 		border: none;
 		border-radius: 0.5rem;
 		color: #fff;
@@ -102,7 +102,7 @@ html {
 	}
 
 		.login-btn:hover {
-			background-image: linear-gradient(to bottom right, #0C4A6E, #0891B2);
+			background: linear-gradient(to right, #0C4A6E, #0C4A6E);
 			cursor: pointer;
 			letter-spacing: 0.1rem;
 		}
