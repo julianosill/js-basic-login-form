@@ -66,10 +66,16 @@ html {
 			line-height: 1.5rem;
 		}
 
-		.form-input:focus-visible {
-			outline: none;
-			border-color: #0891B2;
-		}
+			.form-input:focus,
+			.form-input:active,
+			.form-input:focus-visible {
+				outline: none;
+				border-color: #0891B2;
+			}
+
+			.form-input::placeholder {
+				color: #bbb;
+			}
 
 	.form-checkbox {
 		cursor: pointer;
