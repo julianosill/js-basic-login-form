@@ -3,6 +3,7 @@
 *, *::before, *::after {
 	box-sizing: border-box;
 	font-family: 'Inter', sans-serif;
+	line-height: 1;
 	margin: 0;
 	padding: 0;
 }
@@ -76,3 +77,30 @@ html {
 		color: #333;
 		font-size: 0.9rem;
 	}
+
+	.form-warning {
+		color: #E80000;
+		margin: 1rem 0 0 0;
+	}
+
+	.login-btn {
+		background-color: #0C4A6E;
+		background-image: linear-gradient(to bottom right, #0891B2, #0C4A6E);
+		border: none;
+		border-radius: 0.5rem;
+		color: #fff;
+		display: block;
+		font-size: 1.25rem;
+		font-weight: 700;
+		letter-spacing: 0.05rem;
+		margin: 2rem 0 0 0;
+		padding: 1rem;
+		width: 100%;
+		transition: all ease .25s;
+	}
+
+		.login-btn:hover {
+			background-image: linear-gradient(to bottom right, #0C4A6E, #0891B2);
+			cursor: pointer;
+			letter-spacing: 0.1rem;
+		}
