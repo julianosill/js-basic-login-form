@@ -99,6 +99,7 @@ html {
 		border: none;
 		border-radius: 0.5rem;
 		color: #fff;
+		cursor: pointer;
 		display: block;
 		font-size: 1.25rem;
 		font-weight: 700;
@@ -110,7 +111,11 @@ html {
 	}
 
 		.login-btn:hover {
-			background: linear-gradient(to right, #0C4A6E, #0C4A6E);
-			cursor: pointer;
-			letter-spacing: 0.1rem;
+			background: #0C4A6E;
+		}
+
+		.login-btn:disabled {
+			background: #0C4A6E;
+			cursor: default;
+			opacity: 0.5;
 		}
