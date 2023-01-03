@@ -107,11 +107,10 @@ html {
 		margin: 2rem 0 0 0;
 		padding: 1rem;
 		width: 100%;
-		transition: all ease .25s;
 	}
 
 		.login-btn:hover {
-			background: #0C4A6E;
+			background: linear-gradient(to right, #0C4A6E, #0C4A6E);
 		}
 
 		.login-btn:disabled {
