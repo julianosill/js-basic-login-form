@@ -41,7 +41,20 @@ const enableLoginButton = () => {
 	loginButton.removeAttribute('disabled');
 };
 
+const loginAttempt = () => {
+	// Removes any warning each time the login is attempted
+	warning.textContent = '';
+	loginPromise()
+	// If the promise returns a success attempt, then calls "loginSuccessful()"
+	.then(loginSuccessful)
+	// If there's an error, then calls "loginFailed()"
+	.catch(loginFailed)
+	// .finally() calls the function as the last one in the queue. It doesn't matter if it was a successful or failed attempt, it'll run anyway.
+	.finally(enableLoginButton);
+};
+
 // Prevent the default behavior of the submit event (page refresh)
 loginForm.addEventListener("submit", function(event) {
 	event.preventDefault();
+	loginAttempt();
 });
