@@ -15,6 +15,9 @@ const loginPromise = () => {
 	// Disables the button during the attempt
 	loginButton.setAttribute('disabled', '');
 
+	// Generates a random waiting time
+	const delay = (Math.random() * 1.5) * 1000;
+
 	return new Promise((resolve, reject) => {
 		// setTimeout() simulates requesting and waiting the server response
 		setTimeout(() => {
@@ -23,7 +26,7 @@ const loginPromise = () => {
 			} else {
 				reject('Email or password incorrect. Please, try again.')
 			}
-		}, 1000);
+		}, delay);
 	});
 };
 
