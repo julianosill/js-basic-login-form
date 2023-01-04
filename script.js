@@ -2,8 +2,10 @@
 const correctEmail = 'admin@a.com';
 const correctPassword = 'pass123';
 
-
+// Global variables
 const loginForm = document.querySelector('.login-form');
+const warning = document.querySelector('.form-warning');
+const loginButton = document.querySelector('.login-btn');
 
 const login = () => {
 	const email = document.querySelector('#email').value;
