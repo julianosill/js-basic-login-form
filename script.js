@@ -27,6 +27,20 @@ const loginPromise = () => {
 	});
 };
 
+// Gets the successful message, then alerts the user
+const loginSuccessful = (successfulMessage) => {
+	alert(successfulMessage);
+};
+
+// Gets the failed message from the promise, then shows it in the ".warning" div
+const loginFailed = (failedMessage) => {
+	warning.textContent = failedMessage;
+};
+
+const enableLoginButton = () => {
+	loginButton.removeAttribute('disabled');
+};
+
 // Prevent the default behavior of the submit event (page refresh)
 loginForm.addEventListener("submit", function(event) {
 	event.preventDefault();
