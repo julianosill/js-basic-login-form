@@ -1,6 +1,6 @@
 /* For testing purposes */
 const correctEmail = 'admin@a.com';
-const correctPassword = 'pass123';
+const correctPassword = 'pass1234';
 
 // Global variables
 const loginForm = document.querySelector('.login-form');
@@ -19,7 +19,7 @@ const loginPromise = () => {
 
 	// Generates a random waiting time
 	const delay = (Math.random() * 1.5) * 1000;
-
+	
 	return new Promise((resolve, reject) => {
 		// setTimeout() simulates requesting and waiting the server response
 		setTimeout(() => {
@@ -41,10 +41,12 @@ const loginSuccessful = (successfulMessage) => {
 const loginFailed = () => {
 	if(userData.email !== correctEmail) {
 		warning.textContent = 'Email is not valid. Please, try again';
+	} else if (userData.password.length < 8 ) {
+		warning.textContent = 'Password must have at least 8 characters. Please, try again.';
 	} else if (userData.password !== correctPassword) {
-		warning.textContent = 'Password is incorrect. Please, try again.'
+		warning.textContent = 'Password is incorrect. Please, try again.';
 	} else {
-		warning.textContent = 'Login failed. Please, contact our support team.'
+		warning.textContent = 'Login failed. Please, contact our support team.';
 	};
 };
 
