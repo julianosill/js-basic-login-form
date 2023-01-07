@@ -9,14 +9,37 @@ const warning = document.querySelector('.form-warning');
 // An object to get user email and password after login button is clicked
 const userData = {};
 
-// Checks user data, simulates a waiting time with a promise that returns the result after it
-const loginPromise = () => {
+const loginAttempt = () => {
+	// Clears any warning each time the login is attempted
+	warning.textContent = '';
+
 	// Gets the value after the button is clicked and stores it in two properties
 	userData.email = document.querySelector('#email').value;
 	userData.password = document.querySelector('#password').value;
-	// Disables the button during the attempt
-	loginButton.setAttribute('disabled', '');
 
+	// Checks if email is empty and password is empty as well or has less then 8 characters
+	if(!userData.email) {
+		warning.textContent = 'Please, insert your email.';
+	} else if(!userData.password) {
+		warning.textContent = 'Please, insert your password.';
+	} else if(userData.password.length < 8) {
+		warning.textContent = 'Password must have at least 8 characters.';
+	} else {
+		loginPromise()
+		// If the promise returns a success attempt, then calls "loginSuccessful()"
+		.then(loginSuccessful)
+		// If there's an error, then calls "loginFailed()"
+		.catch(loginFailed)
+		// .finally() calls the function after all above. It doesn't matter if it was a successful or failed attempt, it'll call "enableLoginButton()" anyway.
+		.finally(enableLoginButton);
+	};
+
+};
+
+// Compares user data, simulates a waiting time with a promise that returns the result after it
+const loginPromise = () => {
+	// Disables the button during login attempts
+	loginButton.setAttribute('disabled', '');
 	// Generates a random waiting time
 	const delay = (Math.random() * 1.5) * 1000;
 	
@@ -37,12 +60,10 @@ const loginSuccessful = (successfulMessage) => {
 	alert(successfulMessage);
 };
 
-// Gets the failed message from the promise, then shows it in the ".warning" div
+// Checks why the login failed and shows an error according to it in the "div.warning"
 const loginFailed = () => {
 	if(userData.email !== correctEmail) {
 		warning.textContent = 'Email is not valid. Please, try again';
-	} else if (userData.password.length < 8 ) {
-		warning.textContent = 'Password must have at least 8 characters. Please, try again.';
 	} else if (userData.password !== correctPassword) {
 		warning.textContent = 'Password is incorrect. Please, try again.';
 	} else {
@@ -54,19 +75,7 @@ const enableLoginButton = () => {
 	loginButton.removeAttribute('disabled');
 };
 
-const loginAttempt = () => {
-	// Removes any warning each time the login is attempted
-	warning.textContent = '';
-	loginPromise()
-	// If the promise returns a success attempt, then calls "loginSuccessful()"
-	.then(loginSuccessful)
-	// If there's an error, then calls "loginFailed()"
-	.catch(loginFailed)
-	// .finally() calls the function as the last one in the queue. It doesn't matter if it was a successful or failed attempt, it'll run anyway.
-	.finally(enableLoginButton);
-};
-
-// Prevent the default behavior of the submit event (page refresh)
+// Prevent the default behavior of the submit event (page refresh) and calls "loginAttempt()" after the button is clicked or "Enter" is pushed
 loginForm.addEventListener("submit", function(event) {
 	event.preventDefault();
 	loginAttempt();
