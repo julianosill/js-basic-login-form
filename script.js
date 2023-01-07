@@ -48,9 +48,13 @@ const loginPromise = () => {
 		setTimeout(() => {
 			if(userData.email === correctEmail && userData.password === correctPassword) {
 				resolve('You\'re logged in!');
+			} else if(userData.email !== correctEmail) {
+				reject('Email is not valid. Please, try again.');
+			} else if(userData.password !== correctPassword) {
+				reject('Password is incorrect. Please, try again.');
 			} else {
-				reject('Email or password incorrect.');
-			}
+				reject('Login failed. Please, contact our support team.');
+			};
 		}, delay);
 	});
 };
@@ -60,15 +64,9 @@ const loginSuccessful = (successfulMessage) => {
 	alert(successfulMessage);
 };
 
-// Checks why the login failed and shows an error according to it in the "div.warning"
-const loginFailed = () => {
-	if(userData.email !== correctEmail) {
-		warning.textContent = 'Email is not valid. Please, try again';
-	} else if (userData.password !== correctPassword) {
-		warning.textContent = 'Password is incorrect. Please, try again.';
-	} else {
-		warning.textContent = 'Login failed. Please, contact our support team.';
-	};
+// Gets the failed message, then shows the reason in "div.warning"
+const loginFailed = (failedMessage) => {
+	warning.textContent = failedMessage;
 };
 
 const enableLoginButton = () => {
